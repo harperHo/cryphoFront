@@ -1,0 +1,28 @@
+$color-theme-1: rgb(217, 224, 230); /* Light gray */
+$color-theme-2: rgb(46, 53, 59); /* Gray */
+$color-theme-3: rgb(38, 42, 48); /* Dark gray */
+$color-theme-4: rgb(65, 135, 222); /* Blue */
+$color-theme-5: rgb(39, 181, 183); /* Green */
+$color-theme-6: rgb(125, 102, 217); /* Purple */
+
+/* General */
+$color-white: #fff;
+$color-black: #000;
+
+/* Home */
+$color-home-task: #245D68;
+$color-home-task-checked: #A49FA5;
+
+$color-home-priority-high: #ff5151;
+$color-home-priority-normal: #ff9224;
+$color-home-priority-low: #d9b300;
+
+
+/* Sidebar */
+$color-sidebar-bg: $color-theme-2;
+$color-sidebar-item-color: $color-theme-1;
+$color-sidebar-item-hover-bg: $color-theme-3;
+$color-sidebar-item-active-color: $color-theme-4;
+
+/* Dashboard */
+$color-dashboard-bg: $color-theme-1;

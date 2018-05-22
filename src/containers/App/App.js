@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment, createContext, createRef } from 'react';
 
 export default class App extends Component {
 	render() {
 		return (
-			<div>
-				wefwefwef
-			</div>
+			<Fragment>
+				{this.props.children}
+			</Fragment>
 		);
 	}
 }

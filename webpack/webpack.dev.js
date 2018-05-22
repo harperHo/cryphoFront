@@ -18,7 +18,7 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, '../build')
+		path: path.resolve(__dirname, '../dist')
 	},
 	module: {
 		rules: [
@@ -27,17 +27,51 @@ module.exports = {
 				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
-					query: {
-						presets: ['react', 'env', 'stage-0']
-					}
 				}
-			}
+			},
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: './webpack/postcss.config.js'
+              }
+            }
+           }
+        ]
+      },
+      {
+        test: /\.(ttf|woff|woff2)$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 8192,
+          },
+        },
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 8192,
+          },
+        },
+      }
 		]
 	},
 	devServer: {
 		port: 8080,
 		open: true,
-		contentBase: path.resolve(__dirname, '../build')
+		contentBase: path.resolve(__dirname, '../dist')
 		// publicPath: 'http://localhost:8080/',
 		// inline: true,
 	},
