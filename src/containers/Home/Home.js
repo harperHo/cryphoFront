@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Query } from "react-apollo";
 
+import { GET_TICKERS_SNAPSHOT } from '../../graphql/gql/query';
+import { SUBSCRIBE_TICKER } from '../../graphql/gql/subscription';
 import { Dashboard, Sidebar } from '../../containers';
 
 export default class Home extends Component {
@@ -8,7 +11,7 @@ export default class Home extends Component {
 		super(props);
 
     this.state = {
-      activeCurrencies: [],
+      activeCurrencies: ['BTC', 'ETH'],
     };
 
 		this.handleClick = this.handleClick.bind(this);
@@ -26,7 +29,43 @@ export default class Home extends Component {
 		return (
 			<div className="home">
         <Sidebar handleClick={this.handleClick} />
-        <Dashboard currencies={activeCurrencies} />
+        <Query
+          query={GET_TICKERS_SNAPSHOT}
+        >
+          {
+            ({ subscribeToMore, ...result}) => {
+              return (
+                <Dashboard
+                  {...result}
+                  currencies={activeCurrencies}
+                  subscribeToNewTicker={() =>
+                    subscribeToMore({
+                      document: SUBSCRIBE_TICKER,
+                      updateQuery: (prev, { subscriptionData }) => {
+                        const subscribeData = subscriptionData.data;
+
+                        if (!subscribeData) return prev;
+
+                        const { updateTicker: { currency, ticker } } = subscribeData;
+                        const _prev = JSON.parse(JSON.stringify(prev));
+                        const currencyData = _prev.tickers.find(element => element.currency === currency);
+                        const index = currencyData.exchanges.findIndex(element => element.exchange === ticker.exchange);
+
+                        if (index === -1) {
+                          currencyData.exchanges.push(ticker);
+                        } else {
+                          currencyData.exchanges[index] = ticker;
+                        }
+
+                        return _prev;
+                      }
+                    })
+                  }
+                />
+              );
+            }
+          }
+        </Query>
 			</div>
 		);
 	}

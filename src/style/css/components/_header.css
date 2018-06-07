@@ -1,0 +1,38 @@
+.header {
+	display: flex;
+	align-items: center;
+	height: 70px;
+	background-color: $color-blue-2;
+
+	.header-column {
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+
+	.logo {
+		justify-content: center;
+		width: 15%;
+		min-width: 210px;
+		font-size: 32px;
+		font-weight: bold;
+		letter-spacing: 2px;
+		color: $color-gray-1;
+		background-color: $color-blue-1;
+	}
+
+	.page-title {
+		flex: 1;
+		padding-left: 50px;
+		font-size: 20px;
+		letter-spacing: 1px;
+		color: $color-gray-1;
+
+	}
+
+	.icon-container {
+		justify-content: center;
+		width: 70px;
+		height: 70px;
+	}
+}

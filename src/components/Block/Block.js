@@ -38,7 +38,7 @@ export default class Block extends Component {
 
     return (
       <div className="block">
-        <span className="text">{currency}</span>
+        <span className="text currency">{currency}</span>
         {exchanges && this.renderExchanges()}
       </div>
     );

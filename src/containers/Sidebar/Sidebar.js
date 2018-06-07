@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from "react-apollo";
 
 import { GET_CURRENCIES_LIST } from '../../graphql/gql/query';
+import { Search } from '../../components';
 
 export default class Sidebar extends Component {
 
@@ -9,7 +10,8 @@ export default class Sidebar extends Component {
     super(props);
 
     this.state = {
-      activeItems: []
+      activeItems: [],
+      keyword: '',
     };
 
     this._handleClick = this._handleClick.bind(this);
@@ -33,6 +35,12 @@ export default class Sidebar extends Component {
     });
 
     return handleClick(_activeItems);
+  }
+
+  setKeyword(keyword) {
+    this.setState({
+      keyword,
+    })
   }
 
   renderCurrenciesList(currencies) {

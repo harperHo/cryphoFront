@@ -18,5 +18,10 @@
 	    width: 16px;
 	    height: 16px;
 	}
+	&.icon-eye {
+		background-image: url('../img/icon-eye.svg');
+	    width: 28px;
+	    height: 28px;
+	}
 }
 

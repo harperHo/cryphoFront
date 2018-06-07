@@ -1,0 +1,51 @@
+.dashboard {
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	padding-top: 2.5%;
+	background-color: $color-gray-1;
+
+	.block {
+		width: 47%;
+		height: 150px;
+		margin-left: 2%;
+		margin-bottom: 2%;
+		padding: 20px;
+		color: $color-gray-4;
+		background-color: white;
+		box-shadow: 0 0 5px 1px $color-gray-5;
+
+		&:nth-child(2n) {
+			margin-right: 2%;
+		}
+		.currency {
+			font-size: 20px;
+			font-weight: 400;
+		}
+		.table {
+			margin-top: 10px;
+		}
+		.row {
+			display: flex;
+			padding: 3px 0;
+			&:first-child {
+				margin-bottom: 8px;
+				border-bottom: 1px solid $color-gray-1;
+			}
+		}
+		.column {
+			flex: 1;
+			text-align: right;
+		}
+		.exchange {
+			flex: 0 1 auto;
+			width: 80px;
+			text-align: left;
+		}
+		.pct {
+			flex: 0 1 auto;
+			width: 120px;
+		}
+	}
+}

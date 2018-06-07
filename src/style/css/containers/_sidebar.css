@@ -1,0 +1,50 @@
+.sidebar {
+	width: 15%;
+	min-width: 210px;
+	background-color: $color-gray-2;
+
+	.currency-list {
+		padding: 0;
+		list-style-type: none;
+		.item {
+			padding: 8px 20px;
+			color: $color-gray-3;
+			cursor: pointer;
+			transition: background-color .3s;
+			&:hover {
+				background-color: $color-gray-4;
+			}
+			&.active {
+				color: $color-blue-1;
+			}
+		}
+	}
+
+	.search {
+		position: relative;
+		display: flex;
+	    align-items: center;
+		width: 100%;
+		.input {
+			width: 100%;
+			padding: 6px 0 6px 30px;
+			/* color: $color-theme-4; */
+			font-size: 20px;
+			background-color: $color-blue-2;
+			border: none;
+			/* border-bottom: 1px solid $color-search; */
+			outline: none;
+		}
+		.icon-search,
+		.icon-search-active {
+			position: absolute;
+			left: 0;
+		}
+		&.focus {
+			.input {
+				color: $color-black;
+				/* border-bottom: 1px solid $color-search-focus; */
+			}
+		}
+	}
+}
