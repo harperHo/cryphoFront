@@ -1,6 +1,7 @@
 .sidebar {
-	width: 15%;
-	min-width: 210px;
+	/* width: 15%; */
+	/* min-width: 210px; */
+	width: 210px;
 	background-color: $color-gray-2;
 
 	.currency-list {

@@ -6,8 +6,6 @@ export default class Header extends Component {
   }
 
   render() {
-    const { currency, exchanges } = this.props;
-
     return (
       <div className="header">
         <div className="header-column logo">BLABLA</div>

@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import { GET_TICKERS_SNAPSHOT } from '../../graphql/gql/query';
 import { SUBSCRIBE_TICKER } from '../../graphql/gql/subscription';
 import { Dashboard, Sidebar } from '../../containers';
+// import { Loading } from '../../portals';
 
 export default class Home extends Component {
 
@@ -28,12 +29,13 @@ export default class Home extends Component {
 
 		return (
 			<div className="home">
-        <Sidebar handleClick={this.handleClick} />
+        <Sidebar activeCurrencies={activeCurrencies} handleClick={this.handleClick} />
         <Query
           query={GET_TICKERS_SNAPSHOT}
         >
           {
             ({ subscribeToMore, ...result}) => {
+
               return (
                 <Dashboard
                   {...result}
@@ -43,8 +45,6 @@ export default class Home extends Component {
                       document: SUBSCRIBE_TICKER,
                       updateQuery: (prev, { subscriptionData }) => {
                         const subscribeData = subscriptionData.data;
-
-                        if (!subscribeData) return prev;
 
                         const { updateTicker: { currency, ticker } } = subscribeData;
                         const _prev = JSON.parse(JSON.stringify(prev));

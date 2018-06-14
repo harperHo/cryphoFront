@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Block } from '../../components'
+import { Block } from '../../components';
 
 export default class Dashboard extends Component {
 
@@ -44,7 +44,6 @@ export default class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        {loading ? 'Loading...' : ''}
         {this.renderCurrencies()}
       </div>
     );

@@ -5,11 +5,11 @@ import { render } from 'react-dom';
 import { HashRouter, Route } from 'react-router-dom';
 // import { createStore, applyMiddleware } from 'redux';
 // import { Provider } from 'react-redux';
-import { ApolloProvider } from 'react-apollo';
+// import { ApolloProvider } from 'react-apollo';
 // import thunk from 'redux-thunk';
 
 // import reducer from './redux/reducers/reducer';
-import createClient from './helpers/createClient';
+// import apolloClientCreator from './helpers/createClient';
 import { App, Home} from './containers';
 
 import './style/css/main.css';
@@ -19,16 +19,16 @@ import './style/css/main.css';
 // 	applyMiddleware(thunk)
 // );
 
-const client = createClient();
+// const apolloClient = new apolloClientCreator();
 
 render(
-	<ApolloProvider client={client}>
+	// <ApolloProvider client={apolloClient.client}>
 		<HashRouter>
-			<App>
+			<App >
 				<Route exact path="/" component={Home} />
 			</App>
-		</HashRouter>
-	</ApolloProvider>,
+		</HashRouter>,
+	// </ApolloProvider>,
 	document.getElementById('app'),
 );
 

@@ -1,24 +1,34 @@
+$block-margin: calc((100% - (47% * 2)) / 3);
+$dashboard-height: calc(100% - 50px);
+
 .dashboard {
 	flex: 1;
 	display: flex;
 	flex-wrap: wrap;
-	align-content: flex-start;
-	padding-top: 2.5%;
+	align-content:flex-start;
+	overflow-y: auto;
+	height: $dashboard-height;
 	background-color: $color-gray-1;
 
 	.block {
 		width: 47%;
 		height: 150px;
-		margin-left: 2%;
-		margin-bottom: 2%;
 		padding: 20px;
+		margin-bottom: $block-margin;
+		margin-left: $block-margin;
 		color: $color-gray-4;
 		background-color: white;
 		box-shadow: 0 0 5px 1px $color-gray-5;
 
-		&:nth-child(2n) {
-			margin-right: 2%;
+		&:first-child,
+		&:nth-child(2) {
+			margin-top: $block-margin;
 		}
+
+		&:nth-child(even) {
+			margin-left: $block-margin;
+		}
+
 		.currency {
 			font-size: 20px;
 			font-weight: 400;

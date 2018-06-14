@@ -8,10 +8,10 @@ export default class Block extends Component {
   renderExchanges() {
     const { exchanges} = this.props;
 
-    const table = exchanges.map(exchange => {
+    return exchanges.map(exchange => {
       const { exchange: exchangeName, price, vol, pct } = exchange;
       return (
-        <div className="row">
+        <div key={exchangeName} className="row">
           <span className="column exchange">{exchangeName}</span>
           <span className="column price">{price.toFixed(8)}</span>
           <span className="column vol">{vol.toFixed(8)}</span>
@@ -19,18 +19,6 @@ export default class Block extends Component {
         </div>
       );
     });
-
-    return (
-      <div className="table">
-        <div className="row">
-          <span className="column exchange">Exchange</span>
-          <span className="column price">Price</span>
-          <span className="column vol">Volume</span>
-          <span className="column pct">Chg. 24H</span>
-        </div>
-        {table}
-      </div>
-    );
   }
 
   render() {
@@ -39,7 +27,18 @@ export default class Block extends Component {
     return (
       <div className="block">
         <span className="text currency">{currency}</span>
-        {exchanges && this.renderExchanges()}
+        {
+          exchanges &&
+            <div className="table">
+              <div className="row">
+                <span className="column exchange">Exchange</span>
+                <span className="column price">Price</span>
+                <span className="column vol">Volume</span>
+                <span className="column pct">Chg. 24H</span>
+              </div>
+              {this.renderExchanges()}
+            </div>
+        }
       </div>
     );
   }

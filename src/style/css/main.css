@@ -2,4 +2,5 @@
 @import './generals/generals';
 @import './components/components';
 @import './containers/containers';
+@import './portals/portals';
 

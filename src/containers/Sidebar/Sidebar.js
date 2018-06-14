@@ -10,7 +10,6 @@ export default class Sidebar extends Component {
     super(props);
 
     this.state = {
-      activeItems: [],
       keyword: '',
     };
 
@@ -18,23 +17,18 @@ export default class Sidebar extends Component {
   }
 
   _handleClick(e) {
-    const { handleClick } = this.props;
-    const { activeItems } = this.state;
-    const _activeItems = activeItems.slice();
+    const { activeCurrencies, handleClick } = this.props;
+    const _activeCurrencies = activeCurrencies.slice();
     const currency = e.currentTarget.getAttribute('data-currency');
-    const index = _activeItems.indexOf(currency);
+    const index = _activeCurrencies.indexOf(currency);
 
     if (index !== -1) {
-      _activeItems.splice(index, 1);
+      _activeCurrencies.splice(index, 1);
     } else {
-      _activeItems.push(currency);
+      _activeCurrencies.push(currency);
     }
 
-    this.setState({
-      activeItems: _activeItems
-    });
-
-    return handleClick(_activeItems);
+    return handleClick(_activeCurrencies);
   }
 
   setKeyword(keyword) {
@@ -44,10 +38,10 @@ export default class Sidebar extends Component {
   }
 
   renderCurrenciesList(currencies) {
-    const { activeItems } = this.state;
+    const { activeCurrencies } = this.props;
 
     return currencies.map(currency => {
-      const isActive = activeItems.includes(currency);
+      const isActive = activeCurrencies.includes(currency);
 
       return (
         <li key={currency} className={`item ${isActive ? 'active' : ''}`} onClick={this._handleClick} data-currency={currency}>
